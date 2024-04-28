@@ -1,0 +1,22 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}
+Task #{{ product.pk }}
+{% endblock %}
+
+{% block body %}
+<h1>Task <strong>{{ task.title }}</strong></h1>
+<div>
+  <div>Description: <em>{{ task.description }}</em></div>
+  <div>Cost: {{ task.cost }}</div>
+</div>
+<div>
+  <a href="{% url 'tasks:task_update' pk=task.pk %}">Update task</a>
+</div>
+<div>
+  <a href="{% url 'tasks:task_delete' pk=task.pk %}">Archive task</a>
+</div>
+<div>
+  <a href="{% url 'tasks:tasks_list' %}">Back to tasks list</a>
+</div>
+{% endblock %}

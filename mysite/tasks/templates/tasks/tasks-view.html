@@ -1,0 +1,31 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}
+Task list
+{% endblock %}
+
+{% block body %}
+<h1>Tasks:</h1>
+{% if tasks %}
+<div>
+  {% for task in tasks %}
+  <div>
+    <p>Owner: {{ task.owner.username }}</p>
+    <p><a href="{% url 'tasks:task_detail' pk=task.pk %}"
+    >Title: {{ task.title }}</a></p>
+    <p>Description: {% firstof task.description 'no description' %}</p>
+  </div>
+  <br>
+  {% endfor %}
+
+</div>
+
+{% else %}
+<h3>No tasks yet</h3>
+{% endif %}
+
+<div>
+  <a href="{% url 'tasks:task_create' %}"
+  >Create a new task</a>
+</div>
+{% endblock %}
