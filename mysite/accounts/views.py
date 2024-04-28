@@ -36,5 +36,6 @@ class MyLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy("accounts:about-me")
 
+
 class MyLogoutView(LogoutView):
     next_page = reverse_lazy("accounts:login")
